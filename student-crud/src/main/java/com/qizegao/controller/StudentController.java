@@ -9,7 +9,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.qizegao.bean.Msg;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.qizegao.bean.Msg;
 import com.qizegao.bean.Student;
 import com.qizegao.service.StudentService;
 
@@ -110,7 +109,7 @@ public class StudentController {
 	public Msg deleteEmp(@PathVariable("ids")String ids){
 		//批量删除
 		if(ids.contains("-")){
-			List<Integer> del_ids = new ArrayList<>();
+			List<Integer> del_ids = new ArrayList<Integer>();
 			String[] str_ids = ids.split("-");
 			//将所有学生id组装成集合
 			for (String string : str_ids) {
