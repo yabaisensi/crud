@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentExample {
-    protected String orderByClause;
+	
+    protected String orderByClause; //排序方式
 
-    protected boolean distinct;
+    protected boolean distinct; //是否去重
 
-    protected List<Criteria> oredCriteria;
+    protected List<Criteria> oredCriteria; //自定义查询条件
 
     public DepartmentExample() {
         oredCriteria = new ArrayList<Criteria>();
