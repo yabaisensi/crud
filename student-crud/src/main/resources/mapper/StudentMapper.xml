@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qizegao.dao.StudentDtoMapper">
+<mapper namespace="com.qizegao.dao.StudentMapper">
   <resultMap id="BaseResultMap" type="com.qizegao.dto.StudentDto">
     <result column="stu_id" jdbcType="INTEGER" property="stuId" />
     <result column="stu_name" jdbcType="VARCHAR" property="stuName" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     stu_id, stu_name, gender, email, d_id
   </sql>
-  <select id="selectByExample" parameterType="com.qizegao.dto.StudentDtoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.qizegao.dto.StudentExampleDto" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -83,7 +83,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.qizegao.dto.StudentDtoExample">
+  <delete id="deleteByExample" parameterType="com.qizegao.dto.StudentExampleDto">
     delete from tbl_stu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -132,7 +132,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qizegao.dto.StudentDtoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.qizegao.dto.StudentExampleDto" resultType="java.lang.Long">
     select count(*) from tbl_stu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -240,7 +240,7 @@
   <sql id="Base_Column_List">
     stu_id, stu_name, gender, email, d_id
   </sql>
-  <select id="selectByExample" parameterType="com.qizegao.dto.StudentDtoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.qizegao.dto.StudentExampleDto" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -270,7 +270,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="d_id" jdbcType="INTEGER" property="dId" />
     <!-- 指定联合查询出的部门字段 -->
-    <association javaType="com.qizegao.dto.Department" property="department">
+    <association javaType="com.qizegao.dto.DepartmentDto" property="department">
     	<id column="dept_id" property="deptId" />
     	<result column="dept_name" property="deptName" />
     </association>
@@ -314,7 +314,7 @@
     delete from tbl_stu
     where stu_id = #{stuId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qizegao.dto.StudentDtoExample">
+  <delete id="deleteByExample" parameterType="com.qizegao.dto.StudentExampleDto">
     delete from tbl_stu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -363,7 +363,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qizegao.dto.StudentDtoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.qizegao.dto.StudentExampleDto" resultType="java.lang.Long">
     select count(*) from tbl_stu
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />

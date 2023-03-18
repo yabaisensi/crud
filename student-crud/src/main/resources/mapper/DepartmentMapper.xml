@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qizegao.dao.DepartmentDtoMapper">
+<mapper namespace="com.qizegao.dao.DepartmentMapper">
   <resultMap id="BaseResultMap" type="com.qizegao.dto.DepartmentDto">
     <result column="dept_id" jdbcType="INTEGER" property="deptId" />
     <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List">
     dept_id, dept_name
   </sql>
-  <select id="selectByExample" parameterType="com.qizegao.dto.DepartmentDtoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.qizegao.dto.DepartmentExampleDto" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -80,7 +80,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.qizegao.dto.DepartmentDtoExample">
+  <delete id="deleteByExample" parameterType="com.qizegao.dto.DepartmentExampleDto">
     delete from tbl_dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -109,7 +109,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qizegao.dto.DepartmentDtoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.qizegao.dto.DepartmentExampleDto" resultType="java.lang.Long">
     select count(*) from tbl_dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -202,7 +202,7 @@
   <sql id="Base_Column_List">
     dept_id, dept_name
   </sql>
-  <select id="selectByExample" parameterType="com.qizegao.dto.DepartmentDtoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.qizegao.dto.DepartmentExampleDto" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -226,7 +226,7 @@
     delete from tbl_dept
     where dept_id = #{deptId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qizegao.dto.DepartmentDtoExample">
+  <delete id="deleteByExample" parameterType="com.qizegao.dto.DepartmentExampleDto">
     delete from tbl_dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -255,7 +255,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qizegao.dto.DepartmentDtoExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.qizegao.dto.DepartmentExampleDto" resultType="java.lang.Long">
     select count(*) from tbl_dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
