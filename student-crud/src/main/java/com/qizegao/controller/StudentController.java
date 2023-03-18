@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.qizegao.bean.Msg;
-import com.qizegao.bean.Student;
+import com.qizegao.dto.MsgDto;
+import com.qizegao.dto.StudentDto;
 import com.qizegao.service.StudentService;
 
 @Controller
@@ -32,38 +32,38 @@ public class StudentController {
 	//分页查询学生数据
 	@RequestMapping("/stus")
 	@ResponseBody //导入Jackson包使用
-	public Msg getStusWithJson(
+	public MsgDto getStusWithJson(
 			@RequestParam(value = "pn", defaultValue = "1") Integer pn) {
 		PageHelper.startPage(pn, 5);
-		List<Student> stus = studentService.getAll();
+		List<StudentDto> stus = studentService.getAll();
 		PageInfo page = new PageInfo(stus, 5); //PageInfo封装了分页的详细信息
-		return Msg.success().add("pageInfo", page);
+		return MsgDto.success().add("pageInfo", page);
 	}
 	
 	//检查用户名是否已经存在于数据库
 	@ResponseBody
 	@RequestMapping("/checkuser")
-	public Msg checkuser(@RequestParam("stuName")String stuName){
+	public MsgDto checkuser(@RequestParam("stuName")String stuName){
 		
 		//先判断用户名是否满足正则表达式，若不满足无需去数据库查询
 		String regx = "^[\u2E80-\u9FFF]{2,5}";
 		if(!stuName.matches(regx)){
-			return Msg.fail().add("va_msg", "学生姓名必须是2-5位汉字");
+			return MsgDto.fail().add("va_msg", "学生姓名必须是2-5位汉字");
 		}
 		
 		//数据库用户名重复校验
 		boolean b = studentService.checkUser(stuName);
 		if(b){
-			return Msg.success();
+			return MsgDto.success();
 		}else{
-			return Msg.fail().add("va_msg", "学生姓名已存在");
+			return MsgDto.fail().add("va_msg", "学生姓名已存在");
 		}
 	}
 	
 	//保存学生
 	@RequestMapping(value="/stu",method=RequestMethod.POST)
 	@ResponseBody
-	public Msg saveStu(@Valid Student student, BindingResult result){
+	public MsgDto saveStu(@Valid StudentDto student, BindingResult result){
 		
 		if (result.hasErrors()) {
 			
@@ -77,36 +77,36 @@ public class StudentController {
 				//getDefaultMessage表示JavaBean定义的错误信息
 				map.put(fieldError.getField(), fieldError.getDefaultMessage());
 			}
-			return Msg.fail().add("errorFields", map);
+			return MsgDto.fail().add("errorFields", map);
 		} else {
 			//校验结果无误时
 			studentService.saveStu(student);
-			return Msg.success();
+			return MsgDto.success();
 		}
 	}
 	
 	//根据id查询学生信息
 	@RequestMapping(value="/stu/{id}", method=RequestMethod.GET)
 	@ResponseBody
-	public Msg getStu(@PathVariable("id")Integer id){
+	public MsgDto getStu(@PathVariable("id")Integer id){
 		
-		Student student = studentService.getStu(id);
-		return Msg.success().add("stu", student);
+		StudentDto student = studentService.getStu(id);
+		return MsgDto.success().add("stu", student);
 	}
 	
 	//保存更新后的学生信息
 	@ResponseBody
 	@RequestMapping(value="/stu/{stuId}", method=RequestMethod.PUT)
-	public Msg saveStu(Student student){
+	public MsgDto saveStu(StudentDto student){
 		studentService.updateStu(student);
-		return Msg.success();
+		return MsgDto.success();
 	}
 	
 	//删除学生
 	//批量删除时不同的学生通过 "-" 连接
 	@ResponseBody
 	@RequestMapping(value="/stu/{ids}",method=RequestMethod.DELETE)
-	public Msg deleteEmp(@PathVariable("ids")String ids){
+	public MsgDto deleteEmp(@PathVariable("ids")String ids){
 		//批量删除
 		if(ids.contains("-")){
 			List<Integer> del_ids = new ArrayList<Integer>();
@@ -120,7 +120,7 @@ public class StudentController {
 			Integer id = Integer.parseInt(ids);
 			studentService.deleteStu(id);
 		}
-		return Msg.success();
+		return MsgDto.success();
 	}
 	
 }

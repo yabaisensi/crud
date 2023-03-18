@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.qizegao.bean.Department;
-import com.qizegao.bean.Student;
 import com.qizegao.dao.DepartmentMapper;
 import com.qizegao.dao.StudentMapper;
+import com.qizegao.dto.DepartmentDto;
+import com.qizegao.dto.StudentDto;
 
 
 
@@ -77,8 +77,8 @@ public class MapperTest {
 //		studentMapper.insertSelective(new Student(null, "测试用例1", "M", "ceshi@163.com", 2));
 //		studentMapper.insertSelective(new Student(null, "测试用例1", "M", "ceshi@163.com", 3));
 //		studentMapper.insertSelective(new Student(null, "测试用例1", "M", "ceshi@163.com", 4));
-		studentMapper.insertSelective(new Student(null, "冯阳阳", "M", "yangyang@163.com", 1));
-		studentMapper.insertSelective(new Student(null, "王静玲", "F", "jingling@163.com", 2));
+		studentMapper.insertSelective(new StudentDto(null, "冯阳阳", "M", "yangyang@163.com", 1));
+		studentMapper.insertSelective(new StudentDto(null, "王静玲", "F", "jingling@163.com", 2));
 //		
 //		
 //		System.out.println("运行成功");

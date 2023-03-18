@@ -1,9 +1,9 @@
-package com.qizegao.bean;
+package com.qizegao.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DepartmentExample {
+public class DepartmentExampleDto {
 	
     protected String orderByClause; //排序方式
 
@@ -11,7 +11,7 @@ public class DepartmentExample {
 
     protected List<Criteria> oredCriteria; //自定义查询条件
 
-    public DepartmentExample() {
+    public DepartmentExampleDto() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

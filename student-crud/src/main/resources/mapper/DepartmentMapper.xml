@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qizegao.dao.DepartmentMapper">
-  <resultMap id="BaseResultMap" type="com.qizegao.bean.Department">
+<mapper namespace="com.qizegao.dao.DepartmentDtoMapper">
+  <resultMap id="BaseResultMap" type="com.qizegao.dto.DepartmentDto">
     <result column="dept_id" jdbcType="INTEGER" property="deptId" />
     <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
   </resultMap>
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List">
     dept_id, dept_name
   </sql>
-  <select id="selectByExample" parameterType="com.qizegao.bean.DepartmentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.qizegao.dto.DepartmentDtoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -80,17 +80,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.qizegao.bean.DepartmentExample">
+  <delete id="deleteByExample" parameterType="com.qizegao.dto.DepartmentDtoExample">
     delete from tbl_dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.qizegao.bean.Department">
+  <insert id="insert" parameterType="com.qizegao.dto.DepartmentDto">
     insert into tbl_dept (dept_id, dept_name)
     values (#{deptId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.qizegao.bean.Department">
+  <insert id="insertSelective" parameterType="com.qizegao.dto.DepartmentDto">
     insert into tbl_dept
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="deptId != null">
@@ -109,7 +109,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qizegao.bean.DepartmentExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.qizegao.dto.DepartmentDtoExample" resultType="java.lang.Long">
     select count(*) from tbl_dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -137,7 +137,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <resultMap id="BaseResultMap" type="com.qizegao.bean.Department">
+  <resultMap id="BaseResultMap" type="com.qizegao.dto.DepartmentDto">
     <id column="dept_id" jdbcType="INTEGER" property="deptId" />
     <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
   </resultMap>
@@ -202,7 +202,7 @@
   <sql id="Base_Column_List">
     dept_id, dept_name
   </sql>
-  <select id="selectByExample" parameterType="com.qizegao.bean.DepartmentExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.qizegao.dto.DepartmentDtoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -226,17 +226,17 @@
     delete from tbl_dept
     where dept_id = #{deptId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qizegao.bean.DepartmentExample">
+  <delete id="deleteByExample" parameterType="com.qizegao.dto.DepartmentDtoExample">
     delete from tbl_dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.qizegao.bean.Department">
+  <insert id="insert" parameterType="com.qizegao.dto.DepartmentDto">
     insert into tbl_dept (dept_id, dept_name)
     values (#{deptId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.qizegao.bean.Department">
+  <insert id="insertSelective" parameterType="com.qizegao.dto.DepartmentDto">
     insert into tbl_dept
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="deptId != null">
@@ -255,7 +255,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qizegao.bean.DepartmentExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.qizegao.dto.DepartmentDtoExample" resultType="java.lang.Long">
     select count(*) from tbl_dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -283,7 +283,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qizegao.bean.Department">
+  <update id="updateByPrimaryKeySelective" parameterType="com.qizegao.dto.DepartmentDto">
     update tbl_dept
     <set>
       <if test="deptName != null">
@@ -292,7 +292,7 @@
     </set>
     where dept_id = #{deptId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qizegao.bean.Department">
+  <update id="updateByPrimaryKey" parameterType="com.qizegao.dto.DepartmentDto">
     update tbl_dept
     set dept_name = #{deptName,jdbcType=VARCHAR}
     where dept_id = #{deptId,jdbcType=INTEGER}

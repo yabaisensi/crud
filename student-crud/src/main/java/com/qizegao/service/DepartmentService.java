@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qizegao.bean.Department;
 import com.qizegao.dao.DepartmentMapper;
+import com.qizegao.dto.DepartmentDto;
 
 @Service
 public class DepartmentService {
@@ -15,8 +15,8 @@ public class DepartmentService {
 	private DepartmentMapper departmentMapper;
 	
 	//查询所有社团
-	public List<Department> getDepts() {
-		List<Department> list = departmentMapper.selectByExample(null);
+	public List<DepartmentDto> getDepts() {
+		List<DepartmentDto> list = departmentMapper.selectByExample(null);
 		return list;
 	}
 }

@@ -1,17 +1,17 @@
-package com.qizegao.bean;
+package com.qizegao.dto;
 
-public class Department {
+public class DepartmentDto {
     private Integer deptId;
 
     private String deptName;
     
     
 
-    public Department() {
+    public DepartmentDto() {
 		super();
 	}
 
-	public Department(Integer deptId, String deptName) {
+	public DepartmentDto(Integer deptId, String deptName) {
 		super();
 		this.deptId = deptId;
 		this.deptName = deptName;

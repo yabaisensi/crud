@@ -1,16 +1,16 @@
-package com.qizegao.bean;
+package com.qizegao.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentExample {
+public class StudentExampleDto {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public StudentExample() {
+    public StudentExampleDto() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

@@ -1,9 +1,9 @@
-package com.qizegao.bean;
+package com.qizegao.dto;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Msg {
+public class MsgDto {
 	
 	//状态码(设定100表示成功，200表示失败)
 	private int code;
@@ -14,22 +14,22 @@ public class Msg {
 	//用户要返回给浏览器的数据
 	private Map<String, Object> extend = new HashMap<String, Object>();
 
-	public static Msg success(){
-		Msg result = new Msg();
+	public static MsgDto success(){
+		MsgDto result = new MsgDto();
 		result.setCode(100);
 		result.setMsg("处理成功！");
 		return result;
 	}
 	
-	public static Msg fail(){
-		Msg result = new Msg();
+	public static MsgDto fail(){
+		MsgDto result = new MsgDto();
 		result.setCode(200);
 		result.setMsg("处理失败！");
 		return result;
 	}
 	
 	//添加用户返回给浏览器的数据
-	public Msg add(String key,Object value){
+	public MsgDto add(String key,Object value){
 		this.getExtend().put(key, value);
 		return this;
 	}

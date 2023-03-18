@@ -1,34 +1,35 @@
 package com.qizegao.dao;
 
-import com.qizegao.bean.Student;
-import com.qizegao.bean.StudentExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface StudentMapper {
-    long countByExample(StudentExample example);
+import com.qizegao.dto.StudentDto;
+import com.qizegao.dto.StudentExampleDto;
 
-    int deleteByExample(StudentExample example);
+public interface StudentMapper {
+    long countByExample(StudentExampleDto example);
+
+    int deleteByExample(StudentExampleDto example);
 
     int deleteByPrimaryKey(Integer stuId);
 
-    int insert(Student record);
+    int insert(StudentDto record);
 
-    int insertSelective(Student record);
+    int insertSelective(StudentDto record);
 
-    List<Student> selectByExample(StudentExample example);
+    List<StudentDto> selectByExample(StudentExampleDto example);
 
-    Student selectByPrimaryKey(Integer stuId);
+    StudentDto selectByPrimaryKey(Integer stuId);
 
-    int updateByExampleSelective(@Param("record") Student record, @Param("example") StudentExample example);
+    int updateByExampleSelective(@Param("record") StudentDto record, @Param("example") StudentExampleDto example);
 
-    int updateByExample(@Param("record") Student record, @Param("example") StudentExample example);
+    int updateByExample(@Param("record") StudentDto record, @Param("example") StudentExampleDto example);
 
-    int updateByPrimaryKeySelective(Student record);
+    int updateByPrimaryKeySelective(StudentDto record);
 
-    int updateByPrimaryKey(Student record);
+    int updateByPrimaryKey(StudentDto record);
     
-    List<Student> selectByExampleWithDept(StudentExample example);
+    List<StudentDto> selectByExampleWithDept(StudentExampleDto example);
 
-    Student selectByPrimaryKeyWithDept(Integer stuId);
+    StudentDto selectByPrimaryKeyWithDept(Integer stuId);
 }

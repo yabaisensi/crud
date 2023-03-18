@@ -1,30 +1,31 @@
 package com.qizegao.dao;
 
-import com.qizegao.bean.Department;
-import com.qizegao.bean.DepartmentExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-public interface DepartmentMapper {
-    long countByExample(DepartmentExample example);
+import com.qizegao.dto.DepartmentDto;
+import com.qizegao.dto.DepartmentExampleDto;
 
-    int deleteByExample(DepartmentExample example);
+public interface DepartmentMapper {
+    long countByExample(DepartmentExampleDto example);
+
+    int deleteByExample(DepartmentExampleDto example);
 
     int deleteByPrimaryKey(Integer deptId);
 
-    int insert(Department record);
+    int insert(DepartmentDto record);
 
-    int insertSelective(Department record);
+    int insertSelective(DepartmentDto record);
 
-    List<Department> selectByExample(DepartmentExample example);
+    List<DepartmentDto> selectByExample(DepartmentExampleDto example);
 
-    Department selectByPrimaryKey(Integer deptId);
+    DepartmentDto selectByPrimaryKey(Integer deptId);
 
-    int updateByExampleSelective(@Param("record") Department record, @Param("example") DepartmentExample example);
+    int updateByExampleSelective(@Param("record") DepartmentDto record, @Param("example") DepartmentExampleDto example);
 
-    int updateByExample(@Param("record") Department record, @Param("example") DepartmentExample example);
+    int updateByExample(@Param("record") DepartmentDto record, @Param("example") DepartmentExampleDto example);
 
-    int updateByPrimaryKeySelective(Department record);
+    int updateByPrimaryKeySelective(DepartmentDto record);
 
-    int updateByPrimaryKey(Department record);
+    int updateByPrimaryKey(DepartmentDto record);
 }

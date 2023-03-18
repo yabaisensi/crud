@@ -1,10 +1,10 @@
-package com.qizegao.bean;
+package com.qizegao.dto;
 
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 
-public class Student {
+public class StudentDto {
 	
     @Pattern(regexp="^[\u2E80-\u9FFF]{2,5}"
     		,message=" 学生姓名必须是2-5位汉字 ")
@@ -20,15 +20,15 @@ public class Student {
 
     private Integer dId;
     
-    private Department department; 
+    private DepartmentDto department; 
     
     
 
-    public Student() {
+    public StudentDto() {
 		super();
 	}
 
-	public Student(Integer stuId, String stuName, String gender, String email, Integer dId) {
+	public StudentDto(Integer stuId, String stuName, String gender, String email, Integer dId) {
 		super();
 		this.stuId = stuId;
 		this.stuName = stuName;
@@ -37,11 +37,11 @@ public class Student {
 		this.dId = dId;
 	}
 
-	public Department getDepartment() {
+	public DepartmentDto getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(Department department) {
+	public void setDepartment(DepartmentDto department) {
 		this.department = department;
 	}
 
